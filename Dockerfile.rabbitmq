@@ -1,0 +1,9 @@
+FROM rabbitmq:3.11.16-management AS rabbitmq-development
+
+ENV RABBITMQ_PID_FILE /var/lib/rabbitmq/mnesia/rabbitmq
+
+ADD init-rabbitmq.sh /init-rabbitmq.sh
+RUN chmod +x /init-rabbitmq.sh
+
+# Define default command
+CMD ["/init-rabbitmq.sh"]
